@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nihon Connect</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background-color: #e60026;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .intro {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .subscriptions {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .subscription {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      width: 250px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .subscription h3 {
+      margin-top: 0;
+      color: #e60026;
+    }
+    .subscription p {
+      font-size: 1em;
+    }
+    .subscription button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #e60026;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    .subscription button:hover {
+      background-color: #bf001f;
+    }
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #222;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Nihon Connect</h1>
+    <p>L'association de la classe de japonais</p>
+  </header>
+
+  <main>
+    <div class="intro">
+      <p>Rejoignez Nihon Connect pour apprendre le japonais, partager la culture japonaise et participer à des événements exclusifs !</p>
+      <button onclick="alert('Merci de votre inscription !')">S'inscrire maintenant</button>
+    </div>
+
+    <h2 style="text-align:center;">Nos abonnements</h2>
+    <div class="subscriptions">
+      <div class="subscription">
+        <h3>Abonnement Basique</h3>
+        <p>Accès aux cours en ligne<br>Participation aux événements gratuits</p>
+        <p><strong>€10 / mois</strong></p>
+        <button onclick="alert('Vous avez choisi l’abonnement Basique !')">S'inscrire</button>
+      </div>
+      <div class="subscription">
+        <h3>Abonnement Premium</h3>
+        <p>Tout le Basique + ateliers culturels<br>Accès aux événements exclusifs</p>
+        <p><strong>€25 / mois</strong></p>
+        <button onclick="alert('Vous avez choisi l’abonnement Premium !')">S'inscrire</button>
+      </div>
+      <div class="subscription">
+        <h3>Abonnement VIP</h3>
+        <p>Tout le Premium + cours privés<br>Rencontres avec des invités spéciaux</p>
+        <p><strong>€50 / mois</strong></p>
+        <button onclick="alert('Vous avez choisi l’abonnement VIP !')">S'inscrire</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Nihon Connect - Tous droits réservés
+  </footer>
+
+</body>
+</html>
