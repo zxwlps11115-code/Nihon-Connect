@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nihon Connect — Inscription</title>
+
+  <!-- same fonts + look as homepage -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fffaf6; --ink:#182028; --accent:#c62828; --muted:#7a6f64; --card:#fff; --glass: rgba(255,255,255,0.6); --radius:18px; --maxw:1100px;
+      /* responsive sizing */
+      --header-padding: clamp(12px, 2.2vw, 24px);
+      --gutter: clamp(12px, 2vw, 28px);
+      --input-padding: clamp(10px, 1.6vw, 12px);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{font-family:"Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; color:var(--ink); background:linear-gradient(180deg,var(--bg),#fff); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
+    a{color:var(--accent); text-decoration:none}
+
+    /* Layout container */
+    header{display:flex;align-items:center;justify-content:space-between;padding:var(--header-padding) var(--gutter);max-width:var(--maxw);margin:0 auto;gap:14px}
+    .brand{display:flex;align-items:center;gap:14px;min-width:0}
+    .logo{width:clamp(44px,6vw,64px);height:clamp(44px,6vw,64px);border-radius:12px;background:linear-gradient(135deg,#fff,#fee);box-shadow:0 6px 18px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+    .site-name{font-family:"Playfair Display", serif;font-size:clamp(16px,2.2vw,20px);line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+    nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .nav-link{padding:8px 12px;border-radius:10px; color:var(--muted);font-weight:600;border:none;background:transparent;cursor:pointer}
+    .cta{background:linear-gradient(180deg,var(--accent),#a91a1a);color:white;padding:10px 16px;border-radius:999px;font-weight:700;box-shadow:0 8px 20px rgba(198,40,40,0.22);border:none;cursor:pointer}
+
+    .container{max-width:var(--maxw);margin:30px auto;padding:0 20px}
+
+    .card{background:var(--card);padding:18px;border-radius:14px;box-shadow:0 12px 30px rgba(16,24,32,0.06);} 
+
+    h2{margin-top:0}
+    p.small{margin-top:4px;margin-bottom:16px}
+
+    form .row{display:flex;gap:12px;margin-bottom:12px}
+    label{display:block;font-weight:700;margin-bottom:6px}
+    input[type="text"], input[type="email"], input[type="date"], select, textarea, input[type="number"]{width:100%;padding:var(--input-padding);border-radius:10px;border:1px solid #eee;font-size:clamp(14px,1.4vw,16px)}
+    input:focus, select:focus, textarea:focus{outline:3px solid rgba(198,40,40,0.12)}
+
+    .small{font-size:13px;color:var(--muted)}
+
+    /* responsive grid: auto-fit to available width */
+    .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+    .full{grid-column:1 / -1}
+    .courses{display:flex;gap:10px;flex-wrap:wrap}
+    .course-item{padding:10px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);cursor:pointer;display:inline-flex;align-items:center}
+    .course-item input{margin-right:8px}
+    .times{margin-top:8px}
+    .summary{margin-top:14px;padding:12px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.85));border-radius:12px;white-space:pre-line}
+    .muted{color:var(--muted)}
+    .actions{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:12px}
+
+    /* Make buttons touch-friendly on small devices */
+    .nav-link, .cta, button{min-height:44px}
+
+    /* tablet / small desktop tweaks */
+    @media (max-width:900px){
+      header{padding:12px 16px}
+      .site-name{font-size:18px}
+    }
+
+    /* mobile layout: stack header content and make nav full-width */
+    @media (max-width:640px){
+      header{flex-direction:column;align-items:stretch;padding:12px 14px}
+      .brand{justify-content:flex-start}
+      nav{justify-content:space-between;margin-top:10px}
+      /* make nav buttons wrap and expand */
+      nav > *{flex:1 1 auto}
+      nav .cta{order:3;margin-top:8px}
+      nav .nav-link{display:inline-flex;justify-content:center}
+
+      /* summary and actions stack nicely */
+      .actions{flex-direction:column;align-items:stretch}
+      .actions > div:last-child{display:flex;gap:8px;justify-content:flex-end}
+      .actions .cta{width:100%}
+
+      /* inputs a bit larger for fingers */
+      input[type="text"], input[type="email"], input[type="date"], select, textarea, input[type="number"]{font-size:16px;padding:14px}
+    }
+
+    /* very narrow devices */
+    @media (max-width:420px){
+      .cols{grid-template-columns:1fr}
+      .logo{width:48px;height:48px}
+      .site-name{font-size:16px}
+      .course-item{padding:10px}
+    }
+
+    /* utility for visually hidden but accessible text */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="26" r="10" fill="var(--accent)"/><rect x="6" y="38" width="52" height="6" rx="3" fill="#fff" opacity="0.9"/><rect x="12" y="44" width="40" height="4" rx="2" fill="#fff" opacity="0.9"/></svg>
+      </div>
+      <div style="min-width:0">
+        <div class="site-name">Nihon Connect</div>
+        <div class="small" id="tagline">Inscription</div>
+      </div>
+    </div>
+
+    <nav>
+      <a class="nav-link" href="../index.html" id="backHome">Accueil</a>
+      <button class="nav-link" id="langBtn" aria-live="polite">FR</button>
+      <button class="cta" id="submitBtn">Valider l'inscription</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <h2 id="title_main">Formulaire d'inscription</h2>
+      <p class="small" id="subtitle">Remplissez les informations ci‑dessous. Le tarif est calculé automatiquement.</p>
+
+      <form id="signup" onsubmit="event.preventDefault();submitForm()">
+        <div class="cols">
+          <div>
+            <label id="label_name">Nom et prénom</label>
+            <input type="text" id="fullname" required />
+          </div>
+
+          <div>
+            <label id="label_dob">Date de naissance</label>
+            <input type="date" id="dob" />
+          </div>
+
+          <div>
+            <label id="label_email">Email</label>
+            <input type="email" id="email" required />
+          </div>
+
+          <div>
+            <label id="label_participants">Nombre de participants</label>
+            <input type="number" id="participants" min="1" value="1" />
+            <div class="small muted" id="group_note">Réduction de 10% si plus de 2 personnes.</div>
+          </div>
+
+          <div class="full">
+            <label id="label_level">Niveau de langue</label>
+            <select id="level">
+              <option value="Débutant">Débutant</option>
+              <option value="Intermédiaire">Intermédiaire</option>
+              <option value="Avancé">Avancé</option>
+            </select>
+          </div>
+
+          <div class="full">
+            <label id="label_courses">Choix des cours</label>
+            <div class="courses">
+              <label class="course-item"><input type="checkbox" id="course_general" /> <span id="course_general_label">Cours généraux</span></label>
+              <label class="course-item"><input type="checkbox" id="course_jlpt" /> <span id="course_jlpt_label">Préparation JLPT</span></label>
+            </div>
+            <div class="times" id="times_container"></div>
+          </div>
+
+          <div class="full">
+            <label id="label_sessions">Nombre de séances / Options</label>
+            <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px;flex-wrap:wrap">
+              <div style="flex:1;min-width:160px"><input type="number" id="num_sessions" min="1" value="1" /> <div class="small muted" id="sessions_note">(ex. 10 séances)</div></div>
+              <div style="width:260px;min-width:160px">
+                <label><input type="radio" name="period" value="none" checked /> <span id="period_none_label">Standard</span></label><br />
+                <label><input type="radio" name="period" value="6mo" /> <span id="period_6mo_label">6 mois (18 séances) -15%</span></label><br />
+                <label><input type="radio" name="period" value="1y" /> <span id="period_1y_label">1 an (35 séances) -30%</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="full">
+            <label id="label_place">Lieu(s) sélectionné(s)</label>
+            <div id="places" class="small muted">—</div>
+          </div>
+
+        </div>
+
+        <div class="summary" id="summary">
+          <div><strong id="summary_label">Récapitulatif</strong></div>
+          <div id="breakdown" class="small muted">Sélectionnez des cours pour voir le tarif.</div>
+        </div>
+
+        <div class="actions">
+          <div class="small muted">Les tarifs sont indiqués TTC.</div>
+          <div>
+            <button type="button" class="nav-link" id="resetBtn">Réinitialiser</button>
+            <button type="submit" class="cta" id="submitPrimary">S'inscrire</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    // translations (fr/jp/en) - minimal for this page
+    const translations = {
+      fr: {
+        title_main: 'Formulaire d\'inscription',
+        subtitle: 'Remplissez les informations ci‑dessous. Le tarif est calculé automatiquement.',
+        label_name: 'Nom et prénom',
+        label_dob: 'Date de naissance',
+        label_email: 'Email',
+        label_participants: 'Nombre de participants',
+        group_note: 'Réduction de 10% si plus de 2 personnes.',
+        label_level: 'Niveau de langue',
+        course_general_label: 'Cours généraux',
+        course_jlpt_label: 'Préparation JLPT',
+        label_sessions: 'Nombre de séances / Options',
+        sessions_note: '(ex. 10 séances)',
+        label_place: 'Lieu(s) sélectionné(s)',
+        summary_label: 'Récapitulatif',
+        btn_reset: 'Réinitialiser',
+        btn_submit: 'S\'inscrire',
+        places_general: 'Salle A — Centre culturel',
+        places_jlpt: 'Salle B — Centre d\'études',
+        price_per_session_general: 20,
+        price_per_session_jlpt: 20,
+        contact_thanks: 'Merci — inscription enregistrée !',
+        lang_label: 'FR',
+        period_none_label: 'Standard',
+        period_6mo_label: '6 mois (18 séances) -15%',
+        period_1y_label: '1 an (35 séances) -30%'
+      },
+      jp: {
+        title_main: '申し込みフォーム',
+        subtitle: '以下の情報を入力してください。料金は自動で計算されます。',
+        label_name: '氏名',
+        label_dob: '生年月日',
+        label_email: 'メール',
+        label_participants: '参加人数',
+        group_note: '3名以上の申し込みで10%割引',
+        label_level: '言語レベル',
+        course_general_label: '一般クラス',
+        course_jlpt_label: 'JLPT対策',
+        label_sessions: '回数 / オプション',
+        sessions_note: '(例：10回)',
+        label_place: '選択された会場',
+        summary_label: '合計',
+        btn_reset: 'リセット',
+        btn_submit: '申し込む',
+        places_general: '会場A — 文化センター',
+        places_jlpt: '会場B — スタディセンター',
+        price_per_session_general: 20,
+        price_per_session_jlpt: 20,
+        contact_thanks: 'ありがとうございます — お申し込みを受け付けました！',
+        lang_label: 'JP',
+        period_none_label: '通常 (自由に回数を選択)',
+        period_6mo_label: '6ヶ月（18回） -15%',
+        period_1y_label: '1年（35回） -30%'
+      },
+      en: {
+        title_main: 'Signup form',
+        subtitle: 'Fill in the information below. Price is calculated automatically.',
+        label_name: 'Full name',
+        label_dob: 'Date of birth',
+        label_email: 'Email',
+        label_participants: 'Number of participants',
+        group_note: '10% discount for groups with more than 2 people.',
+        label_level: 'Language level',
+        course_general_label: 'General classes',
+        course_jlpt_label: 'JLPT preparation',
+        label_sessions: 'Number of sessions / Options',
+        sessions_note: '(e.g. 10 sessions)',
+        label_place: 'Selected place(s)',
+        summary_label: 'Summary',
+        btn_reset: 'Reset',
+        btn_submit: 'Sign up',
+        places_general: 'Room A — Cultural Center',
+        places_jlpt: 'Room B — Study Center',
+        price_per_session_general: 20,
+        price_per_session_jlpt: 20,
+        contact_thanks: 'Thanks — registration recorded!',
+        lang_label: 'EN',
+        period_none_label: 'Standard (choose sessions)',
+        period_6mo_label: '6 months (18 sessions) -15%',
+        period_1y_label: '1 year (35 sessions) -30%'
+      }
+    };
+
+    // initial language from localStorage (set on homepage)
+    let currentLang = localStorage.getItem('nc_lang') || 'fr';
+
+    // element refs
+    const el = id => document.getElementById(id);
+
+    function setLanguage(lang){
+      if(!translations[lang]) return;
+      currentLang = lang; localStorage.setItem('nc_lang', lang);
+      // texts
+      el('title_main').textContent = translations[lang].title_main;
+      el('subtitle').textContent = translations[lang].subtitle;
+      el('label_name').textContent = translations[lang].label_name;
+      el('label_dob').textContent = translations[lang].label_dob;
+      el('label_email').textContent = translations[lang].label_email;
+      el('label_participants').textContent = translations[lang].label_participants;
+      el('group_note').textContent = translations[lang].group_note;
+      el('label_level').textContent = translations[lang].label_level;
+      el('course_general_label').textContent = translations[lang].course_general_label;
+      el('course_jlpt_label').textContent = translations[lang].course_jlpt_label;
+      el('label_sessions').textContent = translations[lang].label_sessions;
+      el('sessions_note').textContent = translations[lang].sessions_note;
+      el('label_place').textContent = translations[lang].label_place;
+      el('summary_label').textContent = translations[lang].summary_label;
+      el('resetBtn').textContent = translations[lang].btn_reset;
+      el('submitPrimary').textContent = translations[lang].btn_submit;
+      el('submitBtn').textContent = translations[lang].btn_submit;
+      el('langBtn').textContent = translations[lang].lang_label || lang.toUpperCase();
+
+      // period labels
+      document.getElementById('period_none_label').textContent = translations[lang].period_none_label;
+      document.getElementById('period_6mo_label').textContent = translations[lang].period_6mo_label;
+      document.getElementById('period_1y_label').textContent = translations[lang].period_1y_label;
+
+      // places text updated when courses selected
+      updateTimesAndPlaces(); updateSummary();
+    }
+
+    // toggle language button cycles fr->jp->en
+    document.getElementById('langBtn').addEventListener('click', ()=>{
+      const order = ['fr','jp','en'];
+      const idx = order.indexOf(currentLang);
+      const next = order[(idx+1)%order.length];
+      setLanguage(next);
+    });
+
+    // init
+    document.addEventListener('DOMContentLoaded', ()=>{
+      setLanguage(currentLang);
+      bindEvents();
+      updateTimesAndPlaces();
+      updateSummary();
+    });
+
+    // bind events
+    function bindEvents(){
+      ['course_general','course_jlpt','participants'].forEach(id=>el(id).addEventListener('change', ()=>{ updateTimesAndPlaces(); updateSummary(); }));
+      el('num_sessions').addEventListener('change', updateSummary);
+      document.querySelectorAll('input[name="period"]').forEach(r=>r.addEventListener('change', handlePeriodChange));
+      el('resetBtn').addEventListener('click', resetForm);
+      el('submitBtn').addEventListener('click', ()=>{ document.getElementById('signup').dispatchEvent(new Event('submit')); });
+    }
+
+    function resetForm(){
+      document.getElementById('signup').reset();
+      el('participants').value = 1; el('num_sessions').value = 1;
+      document.querySelector('input[name="period"][value="none"]').checked = true;
+      enableSessionsInput(true);
+      updateTimesAndPlaces(); updateSummary();
+    }
+
+    function enableSessionsInput(yes){ el('num_sessions').disabled = !yes; }
+
+    function handlePeriodChange(){
+      const sel = document.querySelector('input[name="period"]:checked').value;
+      if(sel==='6mo'){
+        el('num_sessions').value = 18; enableSessionsInput(false);
+      } else if(sel==='1y'){
+        el('num_sessions').value = 35; enableSessionsInput(false);
+      } else {
+        // standard
+        enableSessionsInput(true);
+      }
+      updateSummary();
+    }
+
+    function updateTimesAndPlaces(){
+      const timesContainer = el('times_container'); timesContainer.innerHTML = '';
+      const places = [];
+      if(el('course_general').checked){
+        const p = document.createElement('div'); p.innerHTML = `<strong>10:00 - 12:00</strong> — ${translations[currentLang].places_general}`;
+        timesContainer.appendChild(p); places.push(translations[currentLang].places_general);
+      }
+      if(el('course_jlpt').checked){
+        const p = document.createElement('div'); p.innerHTML = `<strong>09:00 - 10:00</strong> — ${translations[currentLang].places_jlpt}`;
+        timesContainer.appendChild(p); places.push(translations[currentLang].places_jlpt);
+      }
+      el('places').textContent = places.length ? [...new Set(places)].join(' · ') : '—';
+    }
+
+    function getPrices(){
+      const priceGeneral = translations[currentLang].price_per_session_general || 20;
+      const priceJlpt = translations[currentLang].price_per_session_jlpt || 20;
+      const general = el('course_general').checked;
+      const jlpt = el('course_jlpt').checked;
+      const participants = parseInt(el('participants').value) || 1;
+      const sessions = parseInt(el('num_sessions').value) || 1;
+      // price per session is sum of selected course session prices
+      let basePerSession = 0;
+      if(general) basePerSession += priceGeneral;
+      if(jlpt) basePerSession += priceJlpt;
+      const subtotal = basePerSession * sessions * participants;
+      // subscription discount (percentage)
+      const period = document.querySelector('input[name="period"]:checked').value;
+      let subDiscount = 0;
+      if(period==='6mo') subDiscount = 0.15;
+      if(period==='1y') subDiscount = 0.30;
+      const afterSub = subtotal * (1 - subDiscount);
+      // group discount
+      let groupDiscount = 0;
+      if(participants > 2) groupDiscount = 0.10;
+      const afterGroup = afterSub * (1 - groupDiscount);
+      return {
+        basePerSession, subtotal, subDiscount, groupDiscount, total: Math.round(afterGroup*100)/100, participants, sessions, period, general, jlpt
+      };
+    }
+
+    function formatMoney(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}) + ' €'; }
+
+    function updateSummary(){
+      const s = getPrices();
+      const breakdown = el('breakdown');
+      if(!s.general && !s.jlpt){ breakdown.textContent = translations[currentLang].label_sessions + ' — ' + translations[currentLang].course_general_label + ' / ' + translations[currentLang].course_jlpt_label; return; }
+      let text = '';
+      text += `Tarif par séance (somme des cours sélectionnés): ${formatMoney(s.basePerSession)}\n`;
+      text += `Nombre de séances: ${s.sessions}  · Participants: ${s.participants} \n`;
+      text += `Sous-total: ${formatMoney(s.subtotal)}\n`;
+      if(s.subDiscount>0) text += `Réduction abonnement (${s.subDiscount*100}%): -${formatMoney(s.subtotal * s.subDiscount)}\n`;
+      if(s.groupDiscount>0) text += `Réduction groupe (${s.groupDiscount*100}%): -${formatMoney( (s.subtotal * (1 - s.subDiscount)) * s.groupDiscount )}\n`;
+      text += `→ Total à payer: ${formatMoney(s.total)}`;
+      breakdown.textContent = text;
+    }
+
+    function submitForm(){
+      const name = el('fullname').value.trim();
+      const email = el('email').value.trim();
+      if(!name || !email){ alert((currentLang==='jp')? '名前とメールを入力してください。' : (currentLang==='en')? 'Please provide name and email.' : 'Veuillez renseigner votre nom et email.'); return; }
+      const s = getPrices();
+      const payload = { name, email, dob: el('dob').value, participants: s.participants, courses: { general: s.general, jlpt: s.jlpt }, sessions: s.sessions, period: s.period, total: s.total };
+      console.log('inscription', payload);
+      alert(translations[currentLang].contact_thanks + '' + ((currentLang==='en')? 'Total: ' : 'Total: ') + formatMoney(s.total));
+      resetForm();
+    }
+
+  </script>
+</body>
+</html>
