@@ -18,60 +18,56 @@
       --glass: rgba(255,255,255,0.6);
       --radius:18px;
       --maxw:1100px;
-      --gutter:20px;
+      --pad:24px;
     }
 
-    /* reset + base */
-    *,*::before,*::after{box-sizing:border-box}
+    /* base reset */
+    *{box-sizing:border-box}
     html,body{height:100%}
-    body{font-family:"Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; color:var(--ink); background:linear-gradient(180deg,var(--bg),#fff); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
+    body{font-family:"Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; color:var(--ink); background:linear-gradient(180deg,var(--bg),#fff); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
     a{color:var(--accent); text-decoration:none}
 
-    /* Page container */
-    header{display:flex;align-items:center;justify-content:space-between;padding:14px var(--gutter);max-width:var(--maxw);margin:0 auto;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,#fff,#fee);box-shadow:0 6px 18px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .logo svg{width:36px;height:36px}
-    .site-name{font-family:"Playfair Display", serif;font-size:18px;line-height:1}
-    #tagline{font-size:12px;color:var(--muted)}
+    /* container constraints */
+    .container{max-width:var(--maxw);margin:30px auto;padding:0 20px}
 
-    /* nav */
-    .nav-wrap{display:flex;align-items:center;gap:12px}
-    nav{display:flex;gap:10px;align-items:center}
-    .nav-link{padding:8px 12px;border-radius:10px; color:var(--muted);font-weight:600;white-space:nowrap}
+    /* header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px var(--pad);max-width:var(--maxw);margin:0 auto;gap:18px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:14px;min-width:0}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#fff,#fee);box-shadow:0 6px 18px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .logo svg{width:38px;height:38px}
+    .site-name{font-family:"Playfair Display", serif;font-size:20px;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    header [style*="font-size:12px"]{white-space:nowrap}
+
+    nav{display:flex;gap:12px;align-items:center;margin-left:auto;flex-wrap:wrap}
+    .nav-link{padding:8px 12px;border-radius:10px; color:var(--muted);font-weight:600;display:inline-flex;align-items:center;justify-content:center}
     .nav-link:hover{background:rgba(0,0,0,0.03);color:var(--ink)}
-    .cta{background:linear-gradient(180deg,var(--accent),#a91a1a);color:white;padding:10px 16px;border-radius:999px;font-weight:700;box-shadow:0 8px 20px rgba(198,40,40,0.22);border:none;cursor:pointer}
+
+    .cta{background:linear-gradient(180deg,var(--accent),#a91a1a);color:white;padding:10px 16px;border-radius:999px;font-weight:700;box-shadow:0 8px 20px rgba(198,40,40,0.22);border:none;cursor:pointer;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
     .cta:active{transform:translateY(1px)}
 
-    /* responsive menu button (mobile) */
-    .menu-btn{display:none;background:transparent;border:0;padding:8px;border-radius:10px;cursor:pointer}
-
-    .container{max-width:var(--maxw);margin:30px auto;padding:0 var(--gutter)}
-
     /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:12px}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:18px}
     .hero-left{padding:28px;background:linear-gradient(180deg,rgba(255,255,255,0.7),rgba(255,255,255,0.9));border-radius:var(--radius);box-shadow:0 12px 30px rgba(16,24,32,0.06)}
     .kicker{display:inline-block;font-weight:700;color:var(--accent);letter-spacing:1px;margin-bottom:8px}
-    h1{font-family:"Playfair Display",serif;font-size:clamp(24px,4.2vw,40px);margin:8px 0}
-    p.lead{color:var(--muted);margin:14px 0;font-size:clamp(14px,2.4vw,16px)}
+    h1{font-family:"Playfair Display",serif;font-size:40px;margin:8px 0;line-height:1.05}
+    p.lead{color:var(--muted);margin:14px 0;font-size:16px}
 
     .hero-actions{display:flex;gap:12px;align-items:center;margin-top:12px;flex-wrap:wrap}
     .secondary{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:8px 12px;border-radius:12px}
 
     /* Right: visual panel */
-    .hero-right{height:320px;border-radius:var(--radius);overflow:hidden;position:relative;background:linear-gradient(120deg,#f8f0ea,#fff);display:flex;align-items:center;justify-content:center}
-    .hero-right svg{max-width:100%;height:auto}
+    .hero-right{height:320px;border-radius:var(--radius);overflow:hidden;position:relative;background:linear-gradient(120deg,#f8f0ea,#fff);display:block}
     .sun{position:absolute;right:18px;top:18px;transform:translateZ(0)}
     .wave{position:absolute;left:-40px;bottom:-20px;opacity:0.65}
 
     /* Activities */
-    .section{margin-top:34px}
-    .section h2{font-size:20px;margin-bottom:12px}
+    .section{margin-top:42px}
+    .section h2{font-size:22px;margin-bottom:12px}
     .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
     .card{background:var(--card);padding:18px;border-radius:14px;box-shadow:0 8px 20px rgba(16,24,32,0.04);min-height:140px;display:flex;flex-direction:column;gap:10px}
     .card .title{font-weight:700}
     .card .desc{color:var(--muted);font-size:14px}
-    .card button{margin-top:auto;padding:8px 10px;border-radius:10px;border:none;background:transparent;color:var(--accent);font-weight:700;cursor:pointer}
+    .card button{margin-top:auto;padding:8px 10px;border-radius:10px;border:none;background:transparent;color:var(--accent);font-weight:700;cursor:pointer;min-height:44px}
 
     /* lieu + contact */
     .split{display:grid;grid-template-columns:1fr 380px;gap:18px;align-items:start;margin-top:18px}
@@ -79,60 +75,67 @@
     iframe{width:100%;height:260px;border:0}
 
     .contact{padding:18px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.85));border-radius:14px}
-    .socials{display:flex;gap:10px;margin-top:12px}
+    .socials{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
     .socials a{display:inline-flex;align-items:center;justify-content:center;padding:10px;border-radius:10px;background:var(--glass);backdrop-filter: blur(6px);min-width:44px}
 
     footer{padding:26px 20px;margin-top:34px;text-align:center;color:var(--muted)}
 
-    /* modal */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.35);display:none;align-items:center;justify-content:center;padding:20px;z-index:999}
-    .modal{width:100%;max-width:520px;background:white;border-radius:16px;padding:20px;box-shadow:0 18px 40px rgba(12,18,24,0.25)}
-    .form-row{display:flex;gap:10px;margin-bottom:10px}
-    .form-row input,.form-row select{flex:1;padding:10px;border-radius:10px;border:1px solid #eee}
-    .form-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:8px}
+    /* Accessibility & focus */
+    a:focus,button:focus{outline:3px solid rgba(198,40,40,0.18);outline-offset:3px}
 
-    /* small interactions */
-    .pulse{animation:pulse 2s infinite}
-    @keyframes pulse{0%{box-shadow:0 8px 20px rgba(198,40,40,0.18)}50%{box-shadow:0 18px 36px rgba(198,40,40,0.28)}100%{box-shadow:0 8px 20px rgba(198,40,40,0.18)}}
-
-    /* Responsive rules */
-    @media (max-width:1100px){
-      .hero{grid-template-columns:1fr 360px}
-      .split{grid-template-columns:1fr 320px}
-    }
-
+    /* responsive: tablets and below */
     @media(max-width:980px){
-      /* stack hero and split */
       .hero{grid-template-columns:1fr;}
       .split{grid-template-columns:1fr}
       header{padding:12px 16px}
       .hero-right{height:220px}
-      nav{gap:8px}
+      .site-name{font-size:18px}
     }
 
-    @media(max-width:720px){
-      /* mobile adjustments */
-      header{align-items:flex-start}
-      .site-name{font-size:16px}
-      #tagline{display:none}
-
-      /* hide full nav and show menu button */
-      nav{display:none;position:fixed;inset:auto 0 0 0;background:linear-gradient(180deg,rgba(255,255,255,0.98),#fff);box-shadow:0 -6px 20px rgba(0,0,0,0.06);padding:12px;flex-direction:column;gap:8px;border-top-left-radius:12px;border-top-right-radius:12px}
-      nav.show{display:flex}
-      .menu-btn{display:inline-flex}
-      .nav-wrap{gap:8px}
-
+    /* mobile adjustments */
+    @media(max-width:700px){
+      :root{--pad:16px}
+      header{padding:12px var(--pad);gap:12px}
+      .logo{width:48px;height:48px}
+      .logo svg{width:30px;height:30px}
+      .site-name{font-size:17px}
+      h1{font-size:28px}
+      p.lead{font-size:15px}
       .hero-left{padding:18px}
       .hero-right{height:180px}
-      .modal{margin:20px;width:calc(100% - 40px)}
-      iframe{height:220px}
-
-      .cards{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+      nav{gap:8px}
+      .nav-link{padding:10px 12px;border-radius:10px;font-size:15px}
+      .cta{padding:12px 14px}
+      .cards{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+      .card{min-height:150px}
+      .socials a{min-width:48px;padding:12px}
+      .map iframe{height:220px}
     }
 
-    @media (prefers-reduced-motion: reduce){
-      .pulse{animation:none}
+    /* small phones: prioritize reading + touch targets */
+    @media(max-width:480px){
+      body{font-size:15px}
+      header{justify-content:flex-start}
+      .brand{gap:10px}
+      /* place nav under header in a compact row that can scroll horizontally */
+      nav{order:3;width:100%;overflow:auto;padding:8px 0;gap:10px;background:transparent}
+      nav::-webkit-scrollbar{display:none}
+      .hero{gap:16px}
+      h1{font-size:22px}
+      .hero-right{display:none} /* hide decorative panel to save space on very small screens */
+      .hero-left{padding:14px;border-radius:12px}
+      .hero-actions{flex-direction:column;align-items:stretch}
+      .hero-actions .cta{width:100%}
+      .hero-actions .secondary{width:100%;text-align:center}
+      .card button{width:100%}
+      .split{grid-template-columns:1fr}
+      .contact{padding:14px}
+      footer{padding:18px}
     }
+
+    /* small interactions */
+    .pulse{animation:pulse 2s infinite}
+    @keyframes pulse{0%{box-shadow:0 8px 20px rgba(198,40,40,0.18)}50%{box-shadow:0 18px 36px rgba(198,40,40,0.28)}100%{box-shadow:0 8px 20px rgba(198,40,40,0.18)}}
 
   </style>
 </head>
@@ -148,37 +151,39 @@
           <rect x="12" y="44" width="40" height="4" rx="2" fill="#fff" opacity="0.9" />
         </svg>
       </div>
-      <div>
-        <div class="site-name">Nihon Connect</div>
-        <div id="tagline">Association — Classe collective de japonais</div>
+      <div style="min-width:0;">
+        <div class="site-name" data-i18n="siteName">Nihon Connect</div>
+        <div style="font-size:12px;color:var(--muted)" data-i18n="tagline">Association — Classe collective de japonais</div>
       </div>
     </div>
 
-    <div class="nav-wrap">
-      <button class="menu-btn" id="menuToggle" aria-expanded="false" aria-controls="mainNav" title="Menu">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h16" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/></svg>
-      </button>
+    <nav>
+      <a class="nav-link" href="#activites" data-i18n="navActivites">Activités</a>
+      <a class="nav-link" href="#lieu" data-i18n="navLieu">Le lieu</a>
+      <a class="nav-link" href="#contact" data-i18n="navContact">Contact</a>
 
-      <nav id="mainNav">
-        <a class="nav-link" href="#activites" id="nav_activities">Activités</a>
-        <a class="nav-link" href="#lieu" id="nav_place">Le lieu</a>
-        <a class="nav-link" href="#contact" id="nav_contact">Contact</a>
-        <button class="nav-link" id="langBtn" title="Changer la langue">FR</button>
-        <a class="cta pulse" id="openSignup" href="inscription/inscription.html">S'inscrire</a>
-      </nav>
-    </div>
+      <!-- Language toggle button: reuses .nav-link style so no new styling -->
+      <button class="nav-link" id="langBtn" title="Changer la langue">FR</button>
+
+      <!-- 'S'inscrire' buttons intentionally have no action -->
+      <a href="inscription/inscription.html">
+        <button class="cta pulse" id="openSignup" data-i18n="signupCTA">S'inscrire</button>
+      </a>
+    </nav>
   </header>
 
   <main class="container">
     <section class="hero">
       <div class="hero-left">
-        <div class="kicker" id="kicker">Vivez le Japon — près de chez vous</div>
-        <h1 id="main_title">Rejoignez Nihon Connect<br><small id="subtitle" style="font-size:16px;color:var(--muted);font-weight:600">Langue • Culture • Communauté</small></h1>
-        <p class="lead" id="lead">Cours en petit groupe, ateliers culturels (茶道, 書道), soirées manga & cinéma, et échanges linguistiques. Ambiance chic & détendue — parfaite pour progresser et rencontrer des passionnés.</p>
+        <div class="kicker" data-i18n="kicker">Vivez le Japon — près de chez vous</div>
+        <h1 data-i18n="heroTitle">Rejoignez Nihon Connect<br><small style="font-size:16px;color:var(--muted);font-weight:600">Langue • Culture • Communauté</small></h1>
+        <p class="lead" data-i18n="lead">Cours en petit groupe, ateliers culturels (茶道, 書道), soirées manga & cinéma, et échanges linguistiques. Ambiance chic & détendue — parfaite pour progresser et rencontrer des passionnés.</p>
 
         <div class="hero-actions">
-          <a class="cta" id="heroSignup" href="inscription/inscription.html">S'inscrire</a>
-          <a class="secondary nav-link" href="#activites" id="discover_activities">Découvrir les activités</a>
+          <a href="inscription/inscription.html">
+            <button class="cta" id="heroSignup" data-i18n="signupCTA2">S'inscrire</button>
+          </a>
+          <a class="secondary nav-link" href="#activites" data-i18n="discoverActivities">Découvrir les activités</a>
         </div>
       </div>
 
@@ -195,47 +200,46 @@
     </section>
 
     <section id="activites" class="section">
-      <h2 id="activities_title">Activités culturelles</h2>
+      <h2 data-i18n="activitiesTitle">Activités culturelles</h2>
       <div class="cards">
         <article class="card">
-          <div style="font-size:20px;" id="act1_title">🖌️ 書道 — Calligraphie</div>
-          <div class="desc" id="act1_desc">Atelier guidé par un calligraphe: techniques, outils et esthétique japonaise. Tous niveaux bienvenus.</div>
-          <button onclick="scrollToContact()" id="act1_btn">S'informer</button>
+          <div style="font-size:20px;" data-i18n="act1Title">🖌️ 書道 — Calligraphie</div>
+          <div class="desc" data-i18n="act1Desc">Atelier guidé par un calligraphe: techniques, outils et esthétique japonaise. Tous niveaux bienvenus.</div>
+          <button onclick="scrollToContact()" data-i18n="act1Btn">S'informer</button>
         </article>
 
         <article class="card">
-          <div style="font-size:20px;" id="act2_title">🍵 茶道 — Cérémonie du thé</div>
-          <div class="desc" id="act2_desc">Vivez une cérémonie du thé authentique et comprenez sa philosophie—rituel, gestes, et partage.</div>
-          <button onclick="scrollToContact()" id="act2_btn">S'informer</button>
+          <div style="font-size:20px;" data-i18n="act2Title">🍵 茶道 — Cérémonie du thé</div>
+          <div class="desc" data-i18n="act2Desc">Vivez une cérémonie du thé authentique et comprenez sa philosophie—rituel, gestes, et partage.</div>
+          <button onclick="scrollToContact()" data-i18n="act2Btn">S'informer</button>
         </article>
 
         <article class="card">
-          <div style="font-size:20px;" id="act3_title">📚 Cours de japonais</div>
-          <div class="desc" id="act3_desc">Groupes par niveaux (débutant → avancé). Mélange d'expression orale, grammaire et pratique culturelle.</div>
-          <a href="inscription/inscription.html">
-              <button id="act3_btn">S'inscrire au cours</button>
-          </a>
+          <div style="font-size:20px;" data-i18n="act3Title">📚 Cours de japonais</div>
+          <div class="desc" data-i18n="act3Desc">Groupes par niveaux (débutant → avancé). Mélange d'expression orale, grammaire et pratique culturelle.</div>
+          <!-- Modified button: triggers the goToCourse() function defined in the script below. -->
+          <button id="courseBtn" onclick="goToCourse()" data-i18n="act3Btn">S'inscrire au cours</button>
         </article>
 
         <article class="card">
-          <div style="font-size:20px;" id="act4_title">🎥 Soirées & Manga</div>
-          <div class="desc" id="act4_desc">Projections, débats, atelier manga et soirées à thème — parfait pour se détendre et partager.</div>
-          <button onclick="scrollToContact()" id="act4_btn">Voir le calendrier</button>
+          <div style="font-size:20px;" data-i18n="act4Title">🎥 Soirées & Manga</div>
+          <div class="desc" data-i18n="act4Desc">Projections, débats, atelier manga et soirées à thème — parfait pour se détendre et partager.</div>
+          <button onclick="scrollToContact()" data-i18n="act4Btn">Voir le calendrier</button>
         </article>
       </div>
     </section>
 
     <section class="section split" id="lieu">
       <div>
-        <h2 id="place_title">Le lieu</h2>
-        <div style="color:var(--muted)" id="place_intro">Nous sommes situés au cœur de la ville, facilement accessible en transports en commun.</div>
+        <h2 data-i18n="placeTitle">Le lieu</h2>
+        <div style="color:var(--muted)" data-i18n="placeDesc">Nous sommes situés au cœur de la ville, facilement accessible en transports en commun.</div>
         <div style="margin-top:12px;background:var(--card);padding:12px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.04)">
-          <strong id="address_label">Adresse (exemple)</strong>
-          <div id="address">12 Rue de l'Erable, 75000 Paris</div>
-          <div style="margin-top:8px;color:var(--muted);font-size:14px" id="hours">Horaires: Lun - Ven 18:30 — 21:00 • Ateliers week-end selon calendrier</div>
+          <strong data-i18n="addressLabel">Adresse (exemple)</strong>
+          <div data-i18n="address">12 Rue de l'Erable, 75000 Paris</div>
+          <div style="margin-top:8px;color:var(--muted);font-size:14px" data-i18n="hours">Horaires: Lun - Ven 18:30 — 21:00 • Ateliers week-end selon calendrier</div>
         </div>
 
-        <div style="margin-top:14px;color:var(--muted);font-size:14px" id="map_note">Remarque: remplacez l'iframe ci‑dessous par votre lien Google Maps ou OpenStreetMap réel si vous le souhaitez.</div>
+        <div style="margin-top:14px;color:var(--muted);font-size:14px" data-i18n="mapRemark">Remarque: remplacez l'iframe ci-dessous par votre lien Google Maps ou OpenStreetMap réel si vous le souhaitez.</div>
         <div class="map" style="margin-top:12px;">
           <!-- Placeholder map: change src to your actual map URL -->
           <iframe title="Carte - Nihon Connect" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9999999999995!2d2.2922925!3d48.8583701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fc000000001%3A0xabcdef!2sParis!5e0!3m2!1sfr!2sfr!4v0000000000000" allowfullscreen loading="lazy"></iframe>
@@ -243,12 +247,12 @@
       </div>
 
       <aside id="contact" class="contact">
-        <h2 id="contact_title">Contact & réseaux sociaux</h2>
-        <p style="color:var(--muted);margin-top:6px" id="contact_intro">Des questions ? Écrivez‑nous ou suivez nos activités sur les réseaux.</p>
+        <h2 data-i18n="contactTitle">Contact & réseaux sociaux</h2>
+        <p style="color:var(--muted);margin-top:6px" data-i18n="contactLead">Des questions ? Écrivez-nous ou suivez nos activités sur les réseaux.</p>
 
         <div style="margin-top:10px">
-          <strong id="mail_label">Mail</strong>
-          <div style="color:var(--muted)" id="mail">contact@nihon-connect.example</div>
+          <strong data-i18n="mailLabel">Mail</strong>
+          <div style="color:var(--muted)" data-i18n="mailValue">nihon_connect.paris@outlook.com</div>
         </div>
 
         <div class="socials" aria-label="Réseaux sociaux">
@@ -256,323 +260,301 @@
           <a href="#" title="Facebook" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-3h2.5V9.3c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6v1.9H18l-.5 3h-2v7A10 10 0 0 0 22 12z" stroke="var(--accent)" stroke-width="0.9" fill="none"/></svg></a>
           <a href="#" title="X" aria-label="X (anciennement Twitter)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 22.43.36a9.07 9.07 0 0 1-2.88 1.1A4.52 4.52 0 0 0 11.5 6.09c0 .35.04.7.12 1.03A12.86 12.86 0 0 1 1.64 1.15a4.48 4.48 0 0 0 1.4 6.03A4.41 4.41 0 0 1 .88 6v.06a4.5 4.5 0 0 0 3.62 4.42 4.52 4.52 0 0 1-2.04.08 4.5 4.5 0 0 0 4.21 3.12A9.06 9.06 0 0 1 0 19.54a12.8 12.8 0 0 0 6.92 2.03c8.32 0 12.87-6.9 12.87-12.87 0-.2 0-.39-.02-.58A9.2 9.2 0 0 0 23 3z" stroke="var(--accent)" stroke-width="0.9" fill="none"/></svg></a>
         </div>
-
-        <form style="margin-top:12px" id="contactForm" onsubmit="event.preventDefault();alert(translations[currentLang].contact_thanks)">
-          <label style="display:block;font-size:13px;margin-bottom:8px" id="contact_label">Envoyer un message</label>
-          <textarea rows="3" placeholder="Votre message..." id="contact_text" style="width:100%;padding:10px;border-radius:10px;border:1px solid #eee"></textarea>
-          <div style="display:flex;justify-content:flex-end;margin-top:8px"><button class="cta" type="submit" id="contact_send">Envoyer</button></div>
-        </form>
       </aside>
     </section>
 
     <footer>
-      © <span id="year"></span> Nihon Connect — <span id="rights">Tous droits réservés</span> · <a href="#contact" id="mentions">Mentions</a>
+      © <span id="year"></span> Nihon Connect — <span data-i18n="rights">Tous droits réservés</span> · <a href="#contact" data-i18n="legalLink">Mentions</a>
     </footer>
   </main>
 
-  <!-- Modal for signup -->
-  <div class="modal-backdrop" id="modal">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
-      <h3 id="signupTitle">S'inscrire à Nihon Connect</h3>
-      <p style="color:var(--muted)" id="signup_intro">Remplissez ce formulaire. Nous vous contacterons pour finaliser votre inscription.</p>
-      <form id="signupForm">
-        <div class="form-row">
-          <input type="text" id="name" placeholder="Nom" required />
-          <input type="email" id="email" placeholder="Email" required />
-        </div>
-        <div class="form-row">
-          <select id="level">
-            <option value="Débutant" id="opt_beginner">Débutant</option>
-            <option value="Intermédiaire" id="opt_intermediate">Intermédiaire</option>
-            <option value="Avancé" id="opt_advanced">Avancé</option>
-          </select>
-          <input type="text" id="phone" placeholder="Téléphone (optionnel)" />
-        </div>
-        <div style="margin-top:8px"><textarea id="note" rows="3" placeholder="Message (ex: horaires préférés)"></textarea></div>
-        <div class="form-actions">
-          <button type="button" class="secondary" id="closeModal">Annuler</button>
-          <button class="cta" type="submit" id="sendSignup">Envoyer</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
   <script>
-    // translations object (UNCHANGED content & keys)
-    const translations = {
-      fr: {
-        nav_activities: 'Activités',
-        nav_place: 'Le lieu',
-        nav_contact: 'Contact',
-        lang_label: 'FR',
-        kicker: 'Vivez le Japon — près de chez vous',
-        main_title: 'Rejoignez Nihon Connect',
-        subtitle: 'Langue • Culture • Communauté',
-        lead: 'Cours en petit groupe, ateliers culturels (茶道, 書道), soirées manga & cinéma, et échanges linguistiques. Ambiance chic & détendue — parfaite pour progresser et rencontrer des passionnés.',
-        discover_activities: 'Découvrir les activités',
-        activities_title: 'Activités culturelles',
-        act1_title: '🖌️ 書道 — Calligraphie',
-        act1_desc: 'Atelier guidé par un calligraphe: techniques, outils et esthétique japonaise. Tous niveaux bienvenus.',
-        act1_btn: 'S\'informer',
-        act2_title: '🍵 茶道 — Cérémonie du thé',
-        act2_desc: 'Vivez une cérémonie du thé authentique et comprenez sa philosophie—rituel, gestes, et partage.',
-        act2_btn: 'S\'informer',
-        act3_title: '📚 Cours de japonais',
-        act3_desc: 'Groupes par niveaux (débutant → avancé). Mélange d\'expression orale, grammaire et pratique culturelle.',
-        act3_btn: 'S\'inscrire au cours',
-        act4_title: '🎥 Soirées & Manga',
-        act4_desc: 'Projections, débats, atelier manga et soirées à thème — parfait pour se détendre et partager.',
-        act4_btn: 'Voir le calendrier',
-        place_title: 'Le lieu',
-        place_intro: 'Nous sommes situés au cœur de la ville, facilement accessible en transports en commun.',
-        address_label: 'Adresse (exemple)',
-        address: '12 Rue de l\'Erable, 75000 Paris',
-        hours: 'Horaires: Lun - Ven 18:30 — 21:00 • Ateliers week-end selon calendrier',
-        map_note: 'Remarque: remplacez l\'iframe ci‑dessous par votre lien Google Maps ou OpenStreetMap réel si vous le souhaitez.',
-        contact_title: 'Contact & réseaux sociaux',
-        contact_intro: 'Des questions ? Écrivez‑nous ou suivez nos activités sur les réseaux.',
-        mail_label: 'Mail',
-        mail: 'contact@nihon-connect.example',
-        contact_label: 'Envoyer un message',
-        contact_send: 'Envoyer',
-        contact_thanks: 'Merci — nous vous répondrons bientôt !',
-        signupTitle: 'S\'inscrire à Nihon Connect',
-        signup_intro: 'Remplissez ce formulaire. Nous vous contacterons pour finaliser votre inscription.',
-        opt_beginner: 'Débutant',
-        opt_intermediate: 'Intermédiaire',
-        opt_advanced: 'Avancé',
-        cancel: 'Annuler',
-        sendSignup: 'Envoyer',
-        rights: 'Tous droits réservés',
-        mentions: 'Mentions'
-      },
-      jp: {
-        nav_activities: '活動',
-        nav_place: '場所',
-        nav_contact: 'お問い合わせ',
-        lang_label: 'JP',
-        kicker: '日本を身近に感じる',
-        main_title: 'Nihon Connect に参加しよう',
-        subtitle: '言語・文化・コミュニティ',
-        lead: '少人数クラス、文化ワークショップ（茶道・書道）、マンガ・映画の夜、言語交換。落ち着いた上品な雰囲気で学べます。',
-        discover_activities: '活動を見る',
-        activities_title: '文化活動',
-        act1_title: '🖌️ 書道',
-        act1_desc: '書道家による指導。道具や技法、日本の美学を学びます。初心者歓迎。',
-        act1_btn: '詳しく',
-        act2_title: '🍵 茶道',
-        act2_desc: '本格的な茶道を体験し、その精神や所作を学びます。',
-        act2_btn: '詳しく',
-        act3_title: '📚 日本語クラス',
-        act3_desc: 'レベル別グループ（初級〜上級）。会話、文法、文化実践をバランス良く学びます。',
-        act3_btn: '申し込む',
-        act4_title: '🎥 イベント＆マンガ',
-        act4_desc: '上映会、ディスカッション、マンガワークショップなど。',
-        act4_btn: 'スケジュールを見る',
-        place_title: '場所',
-        place_intro: '市内中心部にあり、公共交通でアクセスしやすいです。',
-        address_label: '住所（例）',
-        address: 'フランス、パリ 12 Rue de l\'Erable, 75000',
-        hours: '開館時間: 月〜金 18:30 — 21:00 • 週末のワークショップはカレンダー参照',
-        map_note: '注: 下の iframe は実際の Google Maps / OSM リンクに差し替えてください。',
-        contact_title: 'お問い合わせ・SNS',
-        contact_intro: 'ご質問はメールで、またはSNSで活動をフォローしてください。',
-        mail_label: 'メール',
-        mail: 'contact@nihon-connect.example',
-        contact_label: 'メッセージを送る',
-        contact_send: '送信',
-        contact_thanks: 'ありがとうございます — 追ってご連絡します。',
-        signupTitle: 'Nihon Connect 申し込み',
-        signup_intro: 'フォームにご記入ください。登録手続きについてご連絡します。',
-        opt_beginner: '初級',
-        opt_intermediate: '中級',
-        opt_advanced: '上級',
-        cancel: 'キャンセル',
-        sendSignup: '送信',
-        rights: 'All rights reserved',
-        mentions: '表示'
-      },
-      en: {
-        nav_activities: 'Activities',
-        nav_place: 'Location',
-        nav_contact: 'Contact',
-        lang_label: 'EN',
-        kicker: 'Experience Japan — nearby',
-        main_title: 'Join Nihon Connect',
-        subtitle: 'Language • Culture • Community',
-        lead: 'Small-group classes, cultural workshops (tea ceremony, calligraphy), manga & film nights, and language exchanges. Chic, relaxed atmosphere—perfect to progress and meet fellow enthusiasts.',
-        discover_activities: 'Discover activities',
-        activities_title: 'Cultural activities',
-        act1_title: '🖌️ Calligraphy (Shodō)',
-        act1_desc: 'Led by a calligrapher: techniques, tools, and Japanese aesthetics. All levels welcome.',
-        act1_btn: 'Learn more',
-        act2_title: '🍵 Tea ceremony (Sadō)',
-        act2_desc: 'Experience an authentic tea ceremony and learn its philosophy—rituals and sharing.',
-        act2_btn: 'Learn more',
-        act3_title: '📚 Japanese classes',
-        act3_desc: 'Level-based groups (beginner → advanced). Mix of speaking, grammar and cultural practice.',
-        act3_btn: 'Sign up for classes',
-        act4_title: '🎥 Events & Manga',
-        act4_desc: 'Screenings, discussions, manga workshops and themed nights—great for relaxing and sharing.',
-        act4_btn: 'See calendar',
-        place_title: 'Location',
-        place_intro: 'We are located in the city centre, easy to reach by public transport.',
-        address_label: 'Address (example)',
-        address: '12 Rue de l\'Erable, 75000 Paris, France',
-        hours: 'Hours: Mon - Fri 18:30 — 21:00 • Weekend workshops per calendar',
-        map_note: 'Note: replace the iframe below with your real Google Maps or OpenStreetMap link if you wish.',
-        contact_title: 'Contact & social',
-        contact_intro: 'Questions? Email us or follow our activities on social media.',
-        mail_label: 'Email',
-        mail: 'contact@nihon-connect.example',
-        contact_label: 'Send a message',
-        contact_send: 'Send',
-        contact_thanks: 'Thanks — we\'ll get back to you shortly!',
-        signupTitle: 'Sign up to Nihon Connect',
-        signup_intro: 'Fill this form. We will contact you to finalize your registration.',
-        opt_beginner: 'Beginner',
-        opt_intermediate: 'Intermediate',
-        opt_advanced: 'Advanced',
-        cancel: 'Cancel',
-        sendSignup: 'Send',
-        rights: 'All rights reserved',
-        mentions: 'Legal'
-      }
-    };
-
-    // initial language
-    let currentLang = localStorage.getItem('nc_lang') || 'fr';
-
-    function setLanguage(lang){
-      if(!translations[lang]) return;
-      currentLang = lang;
-      localStorage.setItem('nc_lang', lang);
-
-      // header / nav
-      document.getElementById('nav_activities').textContent = translations[lang].nav_activities;
-      document.getElementById('nav_place').textContent = translations[lang].nav_place;
-      document.getElementById('nav_contact').textContent = translations[lang].nav_contact;
-      document.getElementById('langBtn').textContent = translations[lang].lang_label || lang.toUpperCase();
-
-      // hero
-      document.getElementById('kicker').textContent = translations[lang].kicker;
-      document.getElementById('main_title').childNodes[0].nodeValue = translations[lang].main_title + ""; // keep small tag
-      document.getElementById('subtitle').textContent = translations[lang].subtitle;
-      document.getElementById('lead').textContent = translations[lang].lead;
-      document.getElementById('discover_activities').textContent = translations[lang].discover_activities;
-
-      // activities
-      document.getElementById('activities_title').textContent = translations[lang].activities_title;
-      document.getElementById('act1_title').textContent = translations[lang].act1_title;
-      document.getElementById('act1_desc').textContent = translations[lang].act1_desc;
-      document.getElementById('act1_btn').textContent = translations[lang].act1_btn;
-      document.getElementById('act2_title').textContent = translations[lang].act2_title;
-      document.getElementById('act2_desc').textContent = translations[lang].act2_desc;
-      document.getElementById('act2_btn').textContent = translations[lang].act2_btn;
-      document.getElementById('act3_title').textContent = translations[lang].act3_title;
-      document.getElementById('act3_desc').textContent = translations[lang].act3_desc;
-      document.getElementById('act3_btn').textContent = translations[lang].act3_btn;
-      document.getElementById('act4_title').textContent = translations[lang].act4_title;
-      document.getElementById('act4_desc').textContent = translations[lang].act4_desc;
-      document.getElementById('act4_btn').textContent = translations[lang].act4_btn;
-
-      // place
-      document.getElementById('place_title').textContent = translations[lang].place_title;
-      document.getElementById('place_intro').textContent = translations[lang].place_intro;
-      document.getElementById('address_label').textContent = translations[lang].address_label;
-      document.getElementById('address').textContent = translations[lang].address;
-      document.getElementById('hours').textContent = translations[lang].hours;
-      document.getElementById('map_note').textContent = translations[lang].map_note;
-
-      // contact
-      document.getElementById('contact_title').textContent = translations[lang].contact_title;
-      document.getElementById('contact_intro').textContent = translations[lang].contact_intro;
-      document.getElementById('mail_label').textContent = translations[lang].mail_label;
-      document.getElementById('mail').textContent = translations[lang].mail;
-      document.getElementById('contact_label').textContent = translations[lang].contact_label;
-      document.getElementById('contact_send').textContent = translations[lang].contact_send;
-
-      // modal / form
-      document.getElementById('signupTitle').textContent = translations[lang].signupTitle;
-      document.getElementById('signup_intro').textContent = translations[lang].signup_intro;
-      document.getElementById('opt_beginner').textContent = translations[lang].opt_beginner;
-      document.getElementById('opt_intermediate').textContent = translations[lang].opt_intermediate;
-      document.getElementById('opt_advanced').textContent = translations[lang].opt_advanced;
-      document.getElementById('closeModal').textContent = translations[lang].cancel;
-      document.getElementById('sendSignup').textContent = translations[lang].sendSignup;
-
-      // footer
-      document.getElementById('rights').textContent = translations[lang].rights;
-      document.getElementById('mentions').textContent = translations[lang].mentions;
-
-      // placeholders
-      document.getElementById('name').placeholder = (lang==='jp')? '名前' : (lang==='en'? 'Name' : 'Nom');
-      document.getElementById('email').placeholder = (lang==='jp')? 'メール' : (lang==='en'? 'Email' : 'Email');
-      document.getElementById('phone').placeholder = (lang==='jp')? '電話（任意）' : (lang==='en'? 'Phone (optional)' : 'Téléphone (optionnel)');
-      document.getElementById('note').placeholder = (lang==='jp')? 'メッセージ（例：希望時間）' : (lang==='en'? 'Message (e.g. preferred times)' : 'Message (ex: horaires préférés)');
-      document.getElementById('contact_text').placeholder = (lang==='jp')? 'メッセージ...' : (lang==='en'? 'Your message...' : 'Votre message...');
-
-    }
-
-    // language toggle: cycles fr -> jp -> en -> fr
-    function toggleLanguage(){
-      const order = ['fr','jp','en'];
-      const idx = order.indexOf(currentLang);
-      const next = order[(idx+1) % order.length];
-      setLanguage(next);
-    }
-
     // small helpers
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    document.getElementById('langBtn').addEventListener('click', toggleLanguage);
+    // translations object (kept identical to your original)
+    const translations = {
+      fr: {
+        siteName: "Nihon Connect",
+        tagline: "Association — Classe collective de japonais",
+        navActivites: "Activités",
+        navLieu: "Le lieu",
+        navContact: "Contact",
+        signupCTA: "S'inscrire",
+        signupCTA2: "S'inscrire",
+        kicker: "Vivez le Japon — près de chez vous",
+        heroTitle: "Rejoignez Nihon Connect<br><small style=\"font-size:16px;color:var(--muted);font-weight:600\">Langue • Culture • Communauté</small>",
+        lead: "Cours en petit groupe, ateliers culturels (茶道, 書道), soirées manga & cinéma, et échanges linguistiques. Ambiance chic & détendue — parfaite pour progresser et rencontrer des passionnés.",
+        discoverActivities: "Découvrir les activités",
+        activitiesTitle: "Activités culturelles",
+        act1Title: "🖌️ 書道 — Calligraphie",
+        act1Desc: "Atelier guidé par un calligraphe: techniques, outils et esthétique japonaise. Tous niveaux bienvenus.",
+        act1Btn: "S'informer",
+        act2Title: "🍵 茶道 — Cérémonie du thé",
+        act2Desc: "Vivez une cérémonie du thé authentique et comprenez sa philosophie—rituel, gestes, et partage.",
+        act2Btn: "S'informer",
+        act3Title: "📚 Cours de japonais",
+        act3Desc: "Groupes par niveaux (débutant → avancé). Mélange d'expression orale, grammaire et pratique culturelle.",
+        act3Btn: "S'inscrire au cours",
+        act4Title: "🎥 Soirées & Manga",
+        act4Desc: "Projections, débats, atelier manga et soirées à thème — parfait pour se détendre et partager.",
+        act4Btn: "Voir le calendrier",
+        placeTitle: "Le lieu",
+        placeDesc: "Nous sommes situés au cœur de la ville, facilement accessible en transports en commun.",
+        addressLabel: "Adresse (exemple)",
+        address: "12 Rue de l'Erable, 75000 Paris",
+        hours: "Horaires: Lun - Ven 18:30 — 21:00 • Ateliers week-end selon calendrier",
+        mapRemark: "Remarque: remplacez l'iframe ci-dessous par votre lien Google Maps ou OpenStreetMap réel si vous le souhaitez.",
+        contactTitle: "Contact & réseaux sociaux",
+        contactLead: "Des questions ? Écrivez-nous ou suivez nos activités sur les réseaux.",
+        mailLabel: "Mail",
+        mailValue: "nihon_connect.paris@outlook.com",
+        sendMessageLabel: "Envoyer un message",
+        messagePlaceholder: "Votre message...",
+        sendBtn: "Envoyer",
+        rights: "Tous droits réservés",
+        legalLink: "Mentions",
+        modalTitle: "S'inscrire à Nihon Connect",
+        modalLead: "Remplissez ce formulaire. Nous vous contacterons pour finaliser votre inscription.",
+        namePlaceholder: "Nom",
+        emailPlaceholder: "Email",
+        optBeginner: "Débutant",
+        optIntermediate: "Intermédiaire",
+        optAdvanced: "Avancé",
+        phonePlaceholder: "Téléphone (optionnel)",
+        notePlaceholder: "Message (ex: horaires préférés)",
+        cancelBtn: "Annuler",
+        modalSubmit: "Envoyer",
+        alerts: {
+          fillForm: "Veuillez renseigner votre nom et email.",
+          formSent: "Merci — nous vous répondrons bientôt !",
+          toast: (n,e)=>`Merci ${n} — nous vous contacterons bientôt à ${e}.`
+        }
+      },
+      en: {
+        siteName: "Nihon Connect",
+        tagline: "Association — Community Japanese classes",
+        navActivites: "Activities",
+        navLieu: "Location",
+        navContact: "Contact",
+        signupCTA: "Sign up",
+        signupCTA2: "Sign up",
+        kicker: "Experience Japan — close to you",
+        heroTitle: "Join Nihon Connect<br><small style=\"font-size:16px;color:var(--muted);font-weight:600\">Language • Culture • Community</small>",
+        lead: "Small-group classes, cultural workshops (茶道, 書道), manga & cinema nights, and language exchanges. Chic, relaxed atmosphere — perfect to progress and meet fellow enthusiasts.",
+        discoverActivities: "Discover activities",
+        activitiesTitle: "Cultural activities",
+        act1Title: "🖌️ 書道 — Calligraphy",
+        act1Desc: "Workshop led by a calligrapher: techniques, tools and Japanese aesthetics. All levels welcome.",
+        act1Btn: "Learn more",
+        act2Title: "🍵 茶道 — Tea ceremony",
+        act2Desc: "Experience an authentic tea ceremony and learn its philosophy—rituals, gestures, and sharing.",
+        act2Btn: "Learn more",
+        act3Title: "📚 Japanese classes",
+        act3Desc: "Level-based groups (beginner → advanced). Mix of speaking practice, grammar and cultural activities.",
+        act3Btn: "Enroll in class",
+        act4Title: "🎥 Evenings & Manga",
+        act4Desc: "Screenings, discussions, manga workshops and themed nights — perfect to relax and share.",
+        act4Btn: "View schedule",
+        placeTitle: "Location",
+        placeDesc: "We are located in the heart of the city, easily accessible by public transport.",
+        addressLabel: "Address (example)",
+        address: "12 Rue de l'Erable, 75000 Paris",
+        hours: "Hours: Mon - Fri 18:30 — 21:00 • Weekend workshops per schedule",
+        mapRemark: "Note: replace the iframe below with your real Google Maps or OpenStreetMap link if desired.",
+        contactTitle: "Contact & social media",
+        contactLead: "Questions? Write to us or follow our activities on social media.",
+        mailLabel: "Email",
+        mailValue: "nihon_connect.paris@outlook.com",
+        sendMessageLabel: "Send a message",
+        messagePlaceholder: "Your message...",
+        sendBtn: "Send",
+        rights: "All rights reserved",
+        legalLink: "Legal",
+        modalTitle: "Sign up to Nihon Connect",
+        modalLead: "Fill out this form. We will contact you to finalize your registration.",
+        namePlaceholder: "Name",
+        emailPlaceholder: "Email",
+        optBeginner: "Beginner",
+        optIntermediate: "Intermediate",
+        optAdvanced: "Advanced",
+        phonePlaceholder: "Phone (optional)",
+        notePlaceholder: "Message (e.g., preferred times)",
+        cancelBtn: "Cancel",
+        modalSubmit: "Submit",
+        alerts: {
+          fillForm: "Please provide your name and email.",
+          formSent: "Thank you — we will reply soon!",
+          toast: (n,e)=>`Thank you ${n} — we'll contact you soon at ${e}.`
+        }
+      },
+      ja: {
+        siteName: "Nihon Connect",
+        tagline: "団体 — 日本語のグループクラス",
+        navActivites: "アクティビティ",
+        navLieu: "場所",
+        navContact: "お問い合わせ",
+        signupCTA: "申し込む",
+        signupCTA2: "申し込む",
+        kicker: "日本を体験 — あなたの近くで",
+        heroTitle: "Nihon Connect に参加する<br><small style=\"font-size:16px;color:var(--muted);font-weight:600\">言語・文化・コミュニティ</small>",
+        lead: "少人数クラス、文化ワークショップ（茶道、書道）、マンガ＆映画の夜、言語交流。シックでリラックスした雰囲気—上達と仲間作りに最適です。",
+        discoverActivities: "活動を見る",
+        activitiesTitle: "文化活動",
+        act1Title: "🖌️ 書道 — 書道",
+        act1Desc: "書道家による指導：技術、道具、日本の美学。初心者歓迎。",
+        act1Btn: "詳細",
+        act2Title: "🍵 茶道 — 茶道",
+        act2Desc: "本格的な茶道を体験し、その哲学—儀式や所作、共有を学びます。",
+        act2Btn: "詳細",
+        act3Title: "📚 日本語コース",
+        act3Desc: "レベル別グループ（初級→上級）。会話、文法、文化実践を組み合わせます。",
+        act3Btn: "コースに申し込む",
+        act4Title: "🎥 イベント＆マンガ",
+        act4Desc: "上映、ディスカッション、マンガワークショップ、テーマ別イベント—リラックスして交流するのに最適です。",
+        act4Btn: "スケジュールを見る",
+        placeTitle: "場所",
+        placeDesc: "市の中心部にあり、公共交通機関で便利にアクセスできます。",
+        addressLabel: "住所（例）",
+        address: "12 Rue de l'Erable, 75000 Paris",
+        hours: "営業時間：月〜金 18:30 — 21:00 ・ 週末ワークショップはスケジュールに準じます",
+        mapRemark: "注意：下のiframeは必要に応じて実際のGoogleマップやOpenStreetMapのリンクに置き換えてください。",
+        contactTitle: "お問い合わせ・ソーシャルメディア",
+        contactLead: "ご質問はメッセージをお送りいただくか、SNSで活動をフォローしてください。",
+        mailLabel: "メール",
+        mailValue: "nihon_connect.paris@outlook.com",
+        sendMessageLabel: "メッセージを送る",
+        messagePlaceholder: "あなたのメッセージ...",
+        sendBtn: "送信",
+        rights: "全著作権所有",
+        legalLink: "免責事項",
+        modalTitle: "Nihon Connectに申し込む",
+        modalLead: "このフォームにご記入ください。申し込み手続きをご案内します。",
+        namePlaceholder: "氏名",
+        emailPlaceholder: "メール",
+        optBeginner: "初級",
+        optIntermediate: "中級",
+        optAdvanced: "上級",
+        phonePlaceholder: "電話（任意）",
+        notePlaceholder: "メッセージ（例：希望時間）",
+        cancelBtn: "キャンセル",
+        modalSubmit: "送信",
+        alerts: {
+          fillForm: "名前とメールを入力してください。",
+          formSent: "ありがとうございます — すぐにご返信します！",
+          toast: (n,e)=>`ありがとうございます ${n} — ${e} 宛にすぐご連絡します。`
+        }
+      }
+    };
 
-    // faux envoi — afficher confirmation
-    document.getElementById('signupForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      if(!name || !email){ alert((translations[currentLang] && translations[currentLang].contact_thanks) ? (currentLang==='jp'? '名前とメールを入力してください。' : (currentLang==='en'? 'Please enter name and email.' : 'Veuillez renseigner votre nom et email.')) : 'Veuillez renseigner votre nom et email.'); return; }
+    // EDITABLE: remplis ici ton adresse email (ou laisse vide pour utiliser l'adresse affichée sur la page)
+    // Exemple: let recipientEmail = 'contact@tonsite.fr';
+    let recipientEmail = 'nihon_connect.paris@outlook.com';
 
-      // simulate success
+    // EDITABLE: renseignez ici l'URL de la page d'inscription au cours.
+    // Exemple: let courseHref = 'https://example.com/inscription-cours-japonais.html';
+    // Laissez vide ('') si vous préférez configurer l'URL plus tard. Si vide, un message demandera de la configurer.
+    let courseHref = 'inscription/inscription.html';
 
-      showToast((currentLang && translations[currentLang])? (currentLang==='jp'? `ありがとうございます ${name} — ${email} にご連絡します。` : (currentLang==='en'? `Thanks ${name} — we'll contact you at ${email}.` : `Merci ${name} — nous vous contacterons bientôt à ${email}.`)) : `Merci ${name} — nous vous contacterons bientôt à ${email}.`);
-      this.reset();
-    });
+    // Option: ouvrir la page dans un nouvel onglet si true
+    let openCourseInNewTab = false;
 
-    function showToast(msg){
-      const t = document.createElement('div');
-      t.textContent = msg; t.style.position='fixed'; t.style.right='20px'; t.style.bottom='20px'; t.style.padding='12px 16px'; t.style.background='rgba(24,32,40,0.95)'; t.style.color='white'; t.style.borderRadius='10px'; t.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; t.style.zIndex=9999;
-      document.body.appendChild(t);
-      setTimeout(()=>{ t.style.transition='transform 0.35s, opacity 0.35s'; t.style.transform='translateY(18px)'; t.style.opacity='0'; },3600);
-      setTimeout(()=>document.body.removeChild(t),4200);
+    // current language state
+    const langs = ['fr','en','ja'];
+    let currentLang = document.documentElement.lang || 'fr';
+    if(!langs.includes(currentLang)) currentLang = 'fr';
+
+    // apply translations to DOM
+    function applyLang(lang){
+      const all = document.querySelectorAll('[data-i18n]');
+      all.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const dict = translations[lang] && translations[lang][key];
+        if(!dict) return;
+        const tag = el.tagName.toLowerCase();
+        if(typeof dict === 'string'){
+          if(tag === 'input' || tag === 'textarea'){
+            el.placeholder = dict;
+          } else if(tag === 'option'){
+            el.textContent = dict;
+          } else {
+            el.innerHTML = dict;
+          }
+        } else {
+          if(dict.html) el.innerHTML = dict.html;
+          if(dict.text) el.textContent = dict.text;
+          if(dict.placeholder && (el.tagName.toLowerCase()==='input' || el.tagName.toLowerCase()==='textarea')) el.placeholder = dict.placeholder;
+        }
+      });
+
+      document.documentElement.lang = lang;
+      const langBtn = document.getElementById('langBtn');
+      if(langBtn) langBtn.textContent = lang === 'fr' ? 'FR' : (lang === 'en' ? 'EN' : 'JP');
     }
 
-    function scrollToContact(){ document.querySelector('#contact').scrollIntoView({behavior:'smooth'}); }
+    // initialize current language on load
+    applyLang(currentLang);
 
-    // responsive nav toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const mainNav = document.getElementById('mainNav');
-    menuToggle.addEventListener('click', ()=>{
-      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', String(!expanded));
-      mainNav.classList.toggle('show');
-    });
+    // language button cycles through languages
+    const langBtn = document.getElementById('langBtn');
+    if(langBtn){
+      langBtn.addEventListener('click', ()=>{
+        const idx = langs.indexOf(currentLang);
+        const next = langs[(idx+1) % langs.length];
+        currentLang = next;
+        applyLang(currentLang);
+      });
+    }
 
-    // close mobile nav when clicking a link
-    Array.from(document.querySelectorAll('#mainNav a, #mainNav button')).forEach(el => el.addEventListener('click', ()=>{
-      if(window.innerWidth <= 720){ mainNav.classList.remove('show'); menuToggle.setAttribute('aria-expanded','false'); }
-    }));
+    // helper used by some card buttons
+    function scrollToContact(){ const el = document.querySelector('#contact'); if(el) el.scrollIntoView({behavior:'smooth'}); }
 
-    // set initial language on load
-    window.addEventListener('DOMContentLoaded', ()=>{
-      setLanguage(currentLang);
-    });
+    // function to send message by opening the user's mail client (mailto:)
+    function sendMessage(e){
+      e.preventDefault();
+      const ta = document.getElementById('contactMessage');
+      const body = ta ? ta.value.trim() : '';
+      if(!body){
+        alert('Veuillez écrire un message.');
+        return;
+      }
+      const subject = "message depuis la page d'accueil";
+      const to = recipientEmail || (translations[currentLang] && translations[currentLang].mailValue) || '';
+      if(!to){
+        alert('Aucune adresse email configurée. Veuillez ajouter votre adresse dans la variable recipientEmail du script.');
+        return;
+      }
+      const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      // open mail client
+      window.location.href = mailto;
+      // conserve l'alerte d'origine pour confirmation
+      alert(translations[currentLang].alerts.formSent);
+    }
 
-    // ensure nav state resets on resize
-    window.addEventListener('resize', ()=>{
-      if(window.innerWidth > 720){ mainNav.classList.remove('show'); menuToggle.setAttribute('aria-expanded','false'); }
-    });
+    // NEW: function called when user clicks the "Cours de japonais" button
+    function goToCourse(){
+      // If courseHref not set, notify the developer / site maintainer
+      if(!courseHref || courseHref.trim() === ''){
+        // friendly message and fallback to contact section
+        alert('Veuillez configurer la variable "courseHref" dans le script pour définir la page d\'inscription.');
+        scrollToContact();
+        return;
+      }
+
+      // Basic safety: ensure it's a string and not javascript: or data:
+      const trimmed = courseHref.trim();
+      const forbidden = /^(javascript:|data:)/i;
+      if(forbidden.test(trimmed)){
+        alert('URL invalide pour courseHref. Veuillez entrer une URL http(s) valide.');
+        return;
+      }
+
+      if(openCourseInNewTab){
+        window.open(trimmed, '_blank', 'noopener');
+      } else {
+        window.location.href = trimmed;
+      }
+    }
 
   </script>
 </body>
