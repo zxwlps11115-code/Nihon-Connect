@@ -9,39 +9,65 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#fffaf6; --ink:#182028; --accent:#c62828; --muted:#7a6f64; --card:#fff; --glass: rgba(255,255,255,0.6); --radius:18px; --maxw:1100px;
-      /* responsive sizing */
+      --bg:#fffaf6; --ink:#182028; --accent:#c62828; --muted:#7a6f64; --card:#fff;
+      --radius:18px; --maxw:1100px;
       --header-padding: clamp(12px, 2.2vw, 24px);
       --gutter: clamp(12px, 2vw, 28px);
       --input-padding: clamp(10px, 1.6vw, 12px);
+      --shadow-weak: 0 6px 18px rgba(0,0,0,0.06);
+      --shadow-card: 0 12px 30px rgba(16,24,32,0.06);
+      --touch-size: 44px;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{font-family:"Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; color:var(--ink); background:linear-gradient(180deg,var(--bg),#fff); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
+    body{
+      font-family:"Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin:0; color:var(--ink); background:linear-gradient(180deg,var(--bg),#fff);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
     a{color:var(--accent); text-decoration:none}
 
     /* Layout container */
-    header{display:flex;align-items:center;justify-content:space-between;padding:var(--header-padding) var(--gutter);max-width:var(--maxw);margin:0 auto;gap:14px}
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:var(--header-padding) var(--gutter); max-width:var(--maxw); margin:0 auto; gap:14px;
+    }
     .brand{display:flex;align-items:center;gap:14px;min-width:0}
-    .logo{width:clamp(44px,6vw,64px);height:clamp(44px,6vw,64px);border-radius:12px;background:linear-gradient(135deg,#fff,#fee);box-shadow:0 6px 18px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+    .logo{
+      width:clamp(44px,6vw,64px); height:clamp(44px,6vw,64px); border-radius:12px;
+      background:linear-gradient(135deg,#fff,#fee); box-shadow:var(--shadow-weak);
+      display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+    }
     .site-name{font-family:"Playfair Display", serif;font-size:clamp(16px,2.2vw,20px);line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .tagline{font-size:13px;color:var(--muted);margin-top:3px}
 
     nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    .nav-link{padding:8px 12px;border-radius:10px; color:var(--muted);font-weight:600;border:none;background:transparent;cursor:pointer}
-    .cta{background:linear-gradient(180deg,var(--accent),#a91a1a);color:white;padding:10px 16px;border-radius:999px;font-weight:700;box-shadow:0 8px 20px rgba(198,40,40,0.22);border:none;cursor:pointer}
+    .nav-link{
+      padding:8px 12px;border-radius:10px;color:var(--muted);font-weight:600;border:none;background:transparent;cursor:pointer;
+      display:inline-flex;align-items:center;justify-content:center;min-height:var(--touch-size);
+    }
+    .cta{
+      background:linear-gradient(180deg,var(--accent),#a91a1a);color:white;padding:10px 16px;border-radius:999px;font-weight:700;
+      box-shadow:0 8px 20px rgba(198,40,40,0.22);border:none;cursor:pointer;min-height:var(--touch-size);
+    }
 
     .container{max-width:var(--maxw);margin:30px auto;padding:0 20px}
 
-    .card{background:var(--card);padding:18px;border-radius:14px;box-shadow:0 12px 30px rgba(16,24,32,0.06);} 
+    .card{
+      background:var(--card);padding:20px;border-radius:14px;box-shadow:var(--shadow-card);
+    }
 
-    h2{margin-top:0}
-    p.small{margin-top:4px;margin-bottom:16px}
+    h2{margin-top:0;font-size:clamp(18px,2.4vw,24px)}
+    p.small{margin-top:4px;margin-bottom:16px;color:var(--muted)}
 
     form .row{display:flex;gap:12px;margin-bottom:12px}
     label{display:block;font-weight:700;margin-bottom:6px}
-    input[type="text"], input[type="email"], input[type="date"], select, textarea, input[type="number"]{width:100%;padding:var(--input-padding);border-radius:10px;border:1px solid #eee;font-size:clamp(14px,1.4vw,16px)}
-    input:focus, select:focus, textarea:focus{outline:3px solid rgba(198,40,40,0.12)}
+    input[type="text"], input[type="email"], input[type="date"], select, textarea, input[type="number"]{
+      width:100%;padding:var(--input-padding);border-radius:10px;border:1px solid #eee;font-size:clamp(14px,1.4vw,16px)
+    }
+    input:focus, select:focus, textarea:focus{outline:3px solid rgba(198,40,40,0.12); box-shadow:0 0 0 3px rgba(198,40,40,0.06);}
 
     .small{font-size:13px;color:var(--muted)}
 
@@ -49,31 +75,50 @@
     .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
     .full{grid-column:1 / -1}
     .courses{display:flex;gap:10px;flex-wrap:wrap}
-    .course-item{padding:10px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);cursor:pointer;display:inline-flex;align-items:center}
-    .course-item input{margin-right:8px}
+    .course-item{
+      padding:10px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);cursor:pointer;display:inline-flex;align-items:center;
+      gap:8px; background:transparent; user-select:none;
+    }
+    .course-item input{margin:0}
     .times{margin-top:8px}
     .summary{margin-top:14px;padding:12px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.85));border-radius:12px;white-space:pre-line}
     .muted{color:var(--muted)}
     .actions{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:12px}
 
     /* Make buttons touch-friendly on small devices */
-    .nav-link, .cta, button{min-height:44px}
+    .nav-link, .cta, button{min-height:var(--touch-size)}
+
+    /* subtle responsive adjustments */
+    @media (max-width:1100px){
+      .container{margin-top:20px}
+      .card{padding:18px}
+    }
 
     /* tablet / small desktop tweaks */
     @media (max-width:900px){
       header{padding:12px 16px}
       .site-name{font-size:18px}
+      .cols{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+      .course-item{padding:10px}
     }
 
     /* mobile layout: stack header content and make nav full-width */
     @media (max-width:640px){
       header{flex-direction:column;align-items:stretch;padding:12px 14px}
       .brand{justify-content:flex-start}
-      nav{justify-content:space-between;margin-top:10px}
-      /* make nav buttons wrap and expand */
-      nav > *{flex:1 1 auto}
-      nav .cta{order:3;margin-top:8px}
-      nav .nav-link{display:inline-flex;justify-content:center}
+      .brand > div{min-width:0}
+      nav{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap:8px;
+        margin-top:10px;
+        align-items:center;
+      }
+      /* keep CTA visually prominent and full width on mobile */
+      nav .cta{grid-column: 1 / -1; order: 3; width:100%}
+      nav .nav-link{justify-content:center;padding:10px;border-radius:10px}
+      .site-name{overflow:visible}
+      .tagline{display:block}
 
       /* summary and actions stack nicely */
       .actions{flex-direction:column;align-items:stretch}
@@ -81,7 +126,9 @@
       .actions .cta{width:100%}
 
       /* inputs a bit larger for fingers */
-      input[type="text"], input[type="email"], input[type="date"], select, textarea, input[type="number"]{font-size:16px;padding:14px}
+      input[type="text"], input[type="email"], input[type="date"], select, textarea, input[type="number"]{
+        font-size:16px;padding:14px;
+      }
     }
 
     /* very narrow devices */
@@ -90,62 +137,69 @@
       .logo{width:48px;height:48px}
       .site-name{font-size:16px}
       .course-item{padding:10px}
+      nav{grid-template-columns:1fr; gap:6px}
+      nav .nav-link{width:100%}
     }
 
-    /* utility for visually hidden but accessible text */
+    /* accessibility helpers */
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* visual improvements for small elements */
+    input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { opacity:0.6 }
+    label > input[type="checkbox"], label > input[type="radio"]{ transform:scale(1.02); margin-right:8px; vertical-align:middle }
+    button:focus{box-shadow:0 0 0 3px rgba(198,40,40,0.12)}
   </style>
 </head>
 <body>
   <header>
-    <div class="brand">
+    <div class="brand" aria-label="Nihon Connect - en-tête">
       <div class="logo" aria-hidden="true">
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="26" r="10" fill="var(--accent)"/><rect x="6" y="38" width="52" height="6" rx="3" fill="#fff" opacity="0.9"/><rect x="12" y="44" width="40" height="4" rx="2" fill="#fff" opacity="0.9"/></svg>
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><circle cx="32" cy="26" r="10" fill="var(--accent)"/><rect x="6" y="38" width="52" height="6" rx="3" fill="#fff" opacity="0.9"/><rect x="12" y="44" width="40" height="4" rx="2" fill="#fff" opacity="0.9"/></svg>
       </div>
       <div style="min-width:0">
-        <div class="site-name">Nihon Connect</div>
-        <div class="small" id="tagline">Inscription</div>
+        <div class="site-name" id="siteName">Nihon Connect</div>
+        <div class="tagline small" id="tagline">Inscription</div>
       </div>
     </div>
 
-    <nav>
+    <nav aria-label="Navigation principale">
       <a class="nav-link" href="../index.html" id="backHome">Accueil</a>
-      <button class="nav-link" id="langBtn" aria-live="polite">FR</button>
-      <button class="cta" id="submitBtn">Valider l'inscription</button>
+      <button class="nav-link" id="langBtn" aria-live="polite" aria-label="Changer la langue">FR</button>
+      <button class="cta" id="submitBtn" aria-label="Valider l'inscription">Valider l'inscription</button>
     </nav>
   </header>
 
-  <main class="container">
-    <div class="card">
+  <main class="container" id="main" role="main">
+    <div class="card" role="region" aria-labelledby="title_main">
       <h2 id="title_main">Formulaire d'inscription</h2>
-      <p class="small" id="subtitle">Remplissez les informations ci‑dessous. Le tarif est calculé automatiquement.</p>
+      <p class="small" id="subtitle">Remplissez les informations ci-dessous. Le tarif est calculé automatiquement.</p>
 
-      <form id="signup" onsubmit="event.preventDefault();submitForm()">
+      <form id="signup" onsubmit="event.preventDefault();submitForm()" aria-describedby="summary">
         <div class="cols">
           <div>
-            <label id="label_name">Nom et prénom</label>
-            <input type="text" id="fullname" required />
+            <label id="label_name" for="fullname">Nom et prénom</label>
+            <input type="text" id="fullname" required aria-required="true" />
           </div>
 
           <div>
-            <label id="label_dob">Date de naissance</label>
+            <label id="label_dob" for="dob">Date de naissance</label>
             <input type="date" id="dob" />
           </div>
 
           <div>
-            <label id="label_email">Email</label>
-            <input type="email" id="email" required />
+            <label id="label_email" for="email">Email</label>
+            <input type="email" id="email" required aria-required="true" />
           </div>
 
           <div>
-            <label id="label_participants">Nombre de participants</label>
+            <label id="label_participants" for="participants">Nombre de participants</label>
             <input type="number" id="participants" min="1" value="1" />
-            <div class="small muted" id="group_note">Réduction de 10% si plus de 2 personnes.</div>
+            <div class="small muted" id="group_note">Réduction de 10% à partir de 2 participants.</div>
           </div>
 
           <div class="full">
-            <label id="label_level">Niveau de langue</label>
-            <select id="level">
+            <label id="label_level" for="level">Niveau de langue</label>
+            <select id="level" aria-label="Niveau de langue">
               <option value="Débutant">Débutant</option>
               <option value="Intermédiaire">Intermédiaire</option>
               <option value="Avancé">Avancé</option>
@@ -154,33 +208,36 @@
 
           <div class="full">
             <label id="label_courses">Choix des cours</label>
-            <div class="courses">
+            <div class="courses" role="group" aria-labelledby="label_courses">
               <label class="course-item"><input type="checkbox" id="course_general" /> <span id="course_general_label">Cours généraux</span></label>
               <label class="course-item"><input type="checkbox" id="course_jlpt" /> <span id="course_jlpt_label">Préparation JLPT</span></label>
             </div>
-            <div class="times" id="times_container"></div>
+            <div class="times" id="times_container" aria-live="polite"></div>
           </div>
 
           <div class="full">
             <label id="label_sessions">Nombre de séances / Options</label>
             <div style="display:flex;gap:12px;align-items:center;margin-bottom:8px;flex-wrap:wrap">
-              <div style="flex:1;min-width:160px"><input type="number" id="num_sessions" min="1" value="1" /> <div class="small muted" id="sessions_note">(ex. 10 séances)</div></div>
+              <div style="flex:1;min-width:160px">
+                <input type="number" id="num_sessions" min="1" value="1" aria-label="Nombre de séances" />
+                <div class="small muted" id="sessions_note">(ex. 10 séances)</div>
+              </div>
               <div style="width:260px;min-width:160px">
                 <label><input type="radio" name="period" value="none" checked /> <span id="period_none_label">Standard</span></label><br />
-                <label><input type="radio" name="period" value="6mo" /> <span id="period_6mo_label">6 mois (18 séances) -15%</span></label><br />
-                <label><input type="radio" name="period" value="1y" /> <span id="period_1y_label">1 an (35 séances) -30%</span></label>
+                <label><input type="radio" name="period" value="6mo" /> <span id="period_6mo_label">abonnement semestriel (18 séances) -15%</span></label><br />
+                <label><input type="radio" name="period" value="1y" /> <span id="period_1y_label">abonnement annuel (35 séances) -30%</span></label>
               </div>
             </div>
           </div>
 
           <div class="full">
             <label id="label_place">Lieu(s) sélectionné(s)</label>
-            <div id="places" class="small muted">—</div>
+            <div id="places" class="small muted" aria-live="polite">—</div>
           </div>
 
         </div>
 
-        <div class="summary" id="summary">
+        <div class="summary" id="summary" aria-live="polite">
           <div><strong id="summary_label">Récapitulatif</strong></div>
           <div id="breakdown" class="small muted">Sélectionnez des cours pour voir le tarif.</div>
         </div>
@@ -197,16 +254,16 @@
   </main>
 
   <script>
-    // translations (fr/jp/en) - minimal for this page
+    // translations (fr/jp/en) - extended strings for summary + labels
     const translations = {
       fr: {
         title_main: 'Formulaire d\'inscription',
-        subtitle: 'Remplissez les informations ci‑dessous. Le tarif est calculé automatiquement.',
+        subtitle: 'Remplissez les informations ci-dessous. Le tarif est calculé automatiquement.',
         label_name: 'Nom et prénom',
         label_dob: 'Date de naissance',
         label_email: 'Email',
         label_participants: 'Nombre de participants',
-        group_note: 'Réduction de 10% si plus de 2 personnes.',
+        group_note: 'Réduction de 10% à partir de 2 participants.',
         label_level: 'Niveau de langue',
         course_general_label: 'Cours généraux',
         course_jlpt_label: 'Préparation JLPT',
@@ -223,8 +280,19 @@
         contact_thanks: 'Merci — inscription enregistrée !',
         lang_label: 'FR',
         period_none_label: 'Standard',
-        period_6mo_label: '6 mois (18 séances) -15%',
-        period_1y_label: '1 an (35 séances) -30%'
+        period_6mo_label: 'abonnement semestriel (18 séances) -15%',
+        period_1y_label: 'abonnement annuel (35 séances) -30%',
+        // summary strings
+        per_session_label: 'Tarif par séance (somme des cours sélectionnés):',
+        sessions_label: 'Nombre de séances',
+        participants_label: 'Participants',
+        subtotal_label: 'Sous-total',
+        subscription_discount_label: 'Réduction abonnement',
+        subscription_reason_radio: 'abonnement (sélection)',
+        subscription_reason_sessions: 'abonnement (n° séances)',
+        group_discount_label: 'Réduction groupe',
+        total_label: 'Total à payer',
+        no_courses_text: 'Sélectionnez des cours pour voir le tarif.'
       },
       jp: {
         title_main: '申し込みフォーム',
@@ -233,7 +301,7 @@
         label_dob: '生年月日',
         label_email: 'メール',
         label_participants: '参加人数',
-        group_note: '3名以上の申し込みで10%割引',
+        group_note: '2名以上の申し込みで10%割引',
         label_level: '言語レベル',
         course_general_label: '一般クラス',
         course_jlpt_label: 'JLPT対策',
@@ -250,8 +318,19 @@
         contact_thanks: 'ありがとうございます — お申し込みを受け付けました！',
         lang_label: 'JP',
         period_none_label: '通常 (自由に回数を選択)',
-        period_6mo_label: '6ヶ月（18回） -15%',
-        period_1y_label: '1年（35回） -30%'
+        period_6mo_label: '半年プラン（18回） -15%',
+        period_1y_label: '年間プラン（35回） -30%',
+        // summary strings
+        per_session_label: '1回あたりの料金（選択したクラスの合計）：',
+        sessions_label: '回数',
+        participants_label: '参加者',
+        subtotal_label: '小計',
+        subscription_discount_label: 'サブスクリプション割引',
+        subscription_reason_radio: 'サブスクリプション（選択）',
+        subscription_reason_sessions: 'サブスクリプション（回数）',
+        group_discount_label: 'グループ割引',
+        total_label: '合計金額',
+        no_courses_text: 'クラスを選択して金額を確認してください。'
       },
       en: {
         title_main: 'Signup form',
@@ -260,7 +339,7 @@
         label_dob: 'Date of birth',
         label_email: 'Email',
         label_participants: 'Number of participants',
-        group_note: '10% discount for groups with more than 2 people.',
+        group_note: '10% discount for groups from 2 people.',
         label_level: 'Language level',
         course_general_label: 'General classes',
         course_jlpt_label: 'JLPT preparation',
@@ -277,20 +356,39 @@
         contact_thanks: 'Thanks — registration recorded!',
         lang_label: 'EN',
         period_none_label: 'Standard (choose sessions)',
-        period_6mo_label: '6 months (18 sessions) -15%',
-        period_1y_label: '1 year (35 sessions) -30%'
+        period_6mo_label: 'Semi-annual subscription (18 sessions) -15%',
+        period_1y_label: 'Annual subscription (35 sessions) -30%',
+        // summary strings
+        per_session_label: 'Price per session (sum of selected courses):',
+        sessions_label: 'Number of sessions',
+        participants_label: 'Participants',
+        subtotal_label: 'Subtotal',
+        subscription_discount_label: 'Subscription discount',
+        subscription_reason_radio: 'subscription (selection)',
+        subscription_reason_sessions: 'subscription (number of sessions)',
+        group_discount_label: 'Group discount',
+        total_label: 'Total to pay',
+        no_courses_text: 'Select courses to see the price.'
       }
     };
 
-    // initial language from localStorage (set on homepage)
-    let currentLang = localStorage.getItem('nc_lang') || 'fr';
+    // prefer the page lang attribute, fallback to localStorage
+    let currentLang = document.documentElement.lang || localStorage.getItem('nc_lang') || 'fr';
+
+    const localesMap = { fr: 'fr-FR', jp: 'ja-JP', en: 'en-US' };
 
     // element refs
     const el = id => document.getElementById(id);
 
+    // flag to avoid triggering handlePeriodChange when we programmatically check radios
+    let ignorePeriodChange = false;
+
+    function t(key){ return (translations[currentLang] && translations[currentLang][key]) || translations['fr'][key] || key; }
+
     function setLanguage(lang){
       if(!translations[lang]) return;
       currentLang = lang; localStorage.setItem('nc_lang', lang);
+      document.documentElement.lang = lang; // keep html lang in sync
       // texts
       el('title_main').textContent = translations[lang].title_main;
       el('subtitle').textContent = translations[lang].subtitle;
@@ -339,23 +437,31 @@
     // bind events
     function bindEvents(){
       ['course_general','course_jlpt','participants'].forEach(id=>el(id).addEventListener('change', ()=>{ updateTimesAndPlaces(); updateSummary(); }));
-      el('num_sessions').addEventListener('change', updateSummary);
+      // when user types a number of sessions, sync radio (but keep input enabled)
+      el('num_sessions').addEventListener('input', ()=>{ syncPeriodFromSessions(); updateSummary(); });
+      el('num_sessions').addEventListener('change', ()=>{ syncPeriodFromSessions(); updateSummary(); });
+
       document.querySelectorAll('input[name="period"]').forEach(r=>r.addEventListener('change', handlePeriodChange));
       el('resetBtn').addEventListener('click', resetForm);
       el('submitBtn').addEventListener('click', ()=>{ document.getElementById('signup').dispatchEvent(new Event('submit')); });
     }
 
     function resetForm(){
+      ignorePeriodChange = true;
       document.getElementById('signup').reset();
       el('participants').value = 1; el('num_sessions').value = 1;
+      // set radio to none without triggering handler
       document.querySelector('input[name="period"][value="none"]').checked = true;
       enableSessionsInput(true);
+      ignorePeriodChange = false;
       updateTimesAndPlaces(); updateSummary();
     }
 
     function enableSessionsInput(yes){ el('num_sessions').disabled = !yes; }
 
+    // Called when user clicks a period radio (explicit selection)
     function handlePeriodChange(){
+      if(ignorePeriodChange) return;
       const sel = document.querySelector('input[name="period"]:checked').value;
       if(sel==='6mo'){
         el('num_sessions').value = 18; enableSessionsInput(false);
@@ -366,6 +472,23 @@
         enableSessionsInput(true);
       }
       updateSummary();
+    }
+
+    // When user types a number of sessions: check the appropriate radio BUT do not disable the input
+    function syncPeriodFromSessions(){
+      const sessions = parseInt(el('num_sessions').value) || 0;
+      ignorePeriodChange = true; // prevent radio handler side effects
+      if(sessions >= 35){
+        document.querySelector('input[name="period"][value="1y"]').checked = true;
+      } else if(sessions >= 18){
+        document.querySelector('input[name="period"][value="6mo"]').checked = true;
+      } else {
+        document.querySelector('input[name="period"][value="none"]').checked = true;
+      }
+      // keep input enabled so user can continue editing after typing
+      enableSessionsInput(true);
+      // tiny timeout to re-enable period change handling
+      setTimeout(()=>{ ignorePeriodChange = false; }, 0);
     }
 
     function updateTimesAndPlaces(){
@@ -382,6 +505,7 @@
       el('places').textContent = places.length ? [...new Set(places)].join(' · ') : '—';
     }
 
+    // Compute prices and decide discount source:
     function getPrices(){
       const priceGeneral = translations[currentLang].price_per_session_general || 20;
       const priceJlpt = translations[currentLang].price_per_session_jlpt || 20;
@@ -394,35 +518,81 @@
       if(general) basePerSession += priceGeneral;
       if(jlpt) basePerSession += priceJlpt;
       const subtotal = basePerSession * sessions * participants;
-      // subscription discount (percentage)
-      const period = document.querySelector('input[name="period"]:checked').value;
-      let subDiscount = 0;
-      if(period==='6mo') subDiscount = 0.15;
-      if(period==='1y') subDiscount = 0.30;
+
+      // discount from radio selection (explicit subscription)
+      const periodRadio = document.querySelector('input[name="period"]:checked').value;
+      let radioDiscount = 0;
+      if(periodRadio==='6mo') radioDiscount = 0.15;
+      if(periodRadio==='1y') radioDiscount = 0.30;
+
+      // discount implied by number of sessions typed
+      let sessionsDiscount = 0;
+      if(sessions >= 35) sessionsDiscount = 0.30;
+      else if(sessions >= 18) sessionsDiscount = 0.15;
+
+      // choose the greater discount between explicit radio and typed sessions
+      const subDiscount = Math.max(radioDiscount, sessionsDiscount);
+      // label where it came from (for summary)
+      let subDiscountSource = 'none';
+      if(subDiscount > 0){
+        if(subDiscount === radioDiscount && radioDiscount > 0) subDiscountSource = 'radio';
+        else subDiscountSource = 'sessions';
+      }
+
+      // apply subscription discount first
       const afterSub = subtotal * (1 - subDiscount);
-      // group discount
+
+      // group discount: >=2 participants => 10% applied after subscription discount
       let groupDiscount = 0;
-      if(participants > 2) groupDiscount = 0.10;
+      if(participants >= 2) groupDiscount = 0.10;
       const afterGroup = afterSub * (1 - groupDiscount);
+
       return {
-        basePerSession, subtotal, subDiscount, groupDiscount, total: Math.round(afterGroup*100)/100, participants, sessions, period, general, jlpt
+        basePerSession,
+        subtotal,
+        subDiscount,
+        subDiscountSource,
+        groupDiscount,
+        total: Math.round(afterGroup*100)/100,
+        participants,
+        sessions,
+        period: periodRadio,
+        general, jlpt
       };
     }
 
-    function formatMoney(x){ return x.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}) + ' €'; }
+    // locale-aware money formatting using the page language
+    function formatMoney(x){
+      const locale = localesMap[currentLang] || undefined;
+      try{
+        return new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 }).format(x);
+      }catch(e){
+        // fallback
+        return x.toFixed(2) + ' €';
+      }
+    }
 
     function updateSummary(){
       const s = getPrices();
       const breakdown = el('breakdown');
-      if(!s.general && !s.jlpt){ breakdown.textContent = translations[currentLang].label_sessions + ' — ' + translations[currentLang].course_general_label + ' / ' + translations[currentLang].course_jlpt_label; return; }
-      let text = '';
-      text += `Tarif par séance (somme des cours sélectionnés): ${formatMoney(s.basePerSession)}\n`;
-      text += `Nombre de séances: ${s.sessions}  · Participants: ${s.participants} \n`;
-      text += `Sous-total: ${formatMoney(s.subtotal)}\n`;
-      if(s.subDiscount>0) text += `Réduction abonnement (${s.subDiscount*100}%): -${formatMoney(s.subtotal * s.subDiscount)}\n`;
-      if(s.groupDiscount>0) text += `Réduction groupe (${s.groupDiscount*100}%): -${formatMoney( (s.subtotal * (1 - s.subDiscount)) * s.groupDiscount )}\n`;
-      text += `→ Total à payer: ${formatMoney(s.total)}`;
-      breakdown.textContent = text;
+      if(!s.general && !s.jlpt){ breakdown.textContent = t('no_courses_text'); return; }
+      const lines = [];
+      lines.push(`${t('per_session_label')} ${formatMoney(s.basePerSession)}`);
+      lines.push(`${t('sessions_label')}: ${s.sessions}  · ${t('participants_label')}: ${s.participants}`);
+      lines.push(`${t('subtotal_label')}: ${formatMoney(s.subtotal)}`);
+
+      if(s.subDiscount>0){
+        const pct = Math.round(s.subDiscount*100);
+        const reason = (s.subDiscountSource === 'radio') ? t('subscription_reason_radio') : t('subscription_reason_sessions');
+        const amount = s.subtotal * s.subDiscount;
+        lines.push(`${t('subscription_discount_label')} (${pct}% — ${reason}): -${formatMoney(amount)}`);
+      }
+      if(s.groupDiscount>0){
+        const amount = (s.subtotal * (1 - s.subDiscount)) * s.groupDiscount;
+        lines.push(`${t('group_discount_label')} (${s.groupDiscount*100}%): -${formatMoney(amount)}`);
+      }
+      lines.push(`→ ${t('total_label')}: ${formatMoney(s.total)}`);
+      breakdown.textContent = lines.join('\n');
     }
 
     function submitForm(){
@@ -432,7 +602,8 @@
       const s = getPrices();
       const payload = { name, email, dob: el('dob').value, participants: s.participants, courses: { general: s.general, jlpt: s.jlpt }, sessions: s.sessions, period: s.period, total: s.total };
       console.log('inscription', payload);
-      alert(translations[currentLang].contact_thanks + '' + ((currentLang==='en')? 'Total: ' : 'Total: ') + formatMoney(s.total));
+      // localized total label in the alert
+      alert(`${translations[currentLang].contact_thanks} ${t('total_label')}: ${formatMoney(s.total)}`);
       resetForm();
     }
 
